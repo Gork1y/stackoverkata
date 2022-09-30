@@ -23,7 +23,6 @@
         <spring.messaging.version>5.2.8.RELEASE</spring.messaging.version>
         <thymeleaf.layout.dialect.version>2.5.1</thymeleaf.layout.dialect.version>
         <springdoc.version>1.6.9</springdoc.version>
-        <liquibase.version>4.15.0</liquibase.version>
         <swagger.version>3.0.0</swagger.version>
         <swagger-annotations.version>2.2.2</swagger-annotations.version>
 
@@ -42,13 +41,6 @@
             <artifactId>swagger-annotations</artifactId>
             <version>${swagger-annotations.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>${liquibase.version}</version>
-        </dependency>
-
 
         <dependency>
             <groupId>org.mapstruct</groupId>
