@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Profile</title>
+</head>
+<body>
+
+
+<!--header-->
+<header>
+    <script src="../templates/header.js"></script>
+</header>
+
+<!--sidebar-->
+<aside>
+    <script src="../templates/sidebar.js"></script>
+</aside>
+
+<div class="container">
+    <div class="row mt-3 ml-1">
+        <div class="col-2">
+            <img src="../static/images/logo.svg" class="img-thumbnail bg-dark" alt="...">
+        </div>
+        <div class="col">
+            <h2>Username</h2>
+        </div>
+    </div>
+    <div class="row ml-3 mt-3">
+        <button class="btn border-0 btn-sm btn-outline-danger rounded-pill mr-1">Profile</button>
+        <button class="btn border-0 btn-sm btn-outline-danger rounded-pill mr-1 active">Activity</button>
+        <button class="btn border-0 btn-sm btn-outline-danger rounded-pill">Settings</button>
+    </div>
+    <div class="row mt-3">
+        <div class="sticky-sidebar col-2">
+            <div class="nav flex-column nav-pills sticky-top" role="tablist" aria-orientation="vertical">
+                <button class="nav-link text-start row btn-sm btn-light ml-3 mr-3 rounded-pill active" data-bs-toggle="pill" type="button" role="tab">Summary</button>
+                <button class="nav-link text-start row btn-sm btn-light ml-3 mr-3 rounded-pill" data-bs-toggle="pill" type="button" role="tab">Answers</button>
+                <button class="nav-link text-start row btn-sm btn-light ml-3 mr-3 rounded-pill" data-bs-toggle="pill" type="button" role="tab">Questions</button>
+                <button class="nav-link text-start row btn-sm btn-light ml-3 mr-3 rounded-pill" data-bs-toggle="pill" type="button" role="tab">Tags</button>
+                <button class="nav-link text-start row btn-sm btn-light ml-3 mr-3 rounded-pill" data-bs-toggle="pill" type="button" role="tab">Badges</button>
+                <button class="nav-link text-start row btn-sm btn-light ml-3 mr-3 rounded-pill" data-bs-toggle="pill" type="button" role="tab">Bookmarks</button>
+                <button class="nav-link text-start row btn-sm btn-light ml-3 mr-3 rounded-pill" data-bs-toggle="pill" type="button" role="tab">Votes</button>
+            </div>
+        </div>
+
+        <div class="col">
+
+            <!--Summary-->
+            <div class="row">
+                <div class="col">
+                    <h5>Summary</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card col mr-3">
+                    <div class="card-body">
+                        <text>Some text</text>
+                    </div>
+                </div>
+
+                <div class="card col mr-3">
+                    <div class="card-body">
+                        <text>Some text</text>
+                    </div>
+                </div>
+
+                <div class="card col">
+                    <div class="card-body">
+                        <text>Some text</text>
+                    </div>
+                </div>
+            </div>
+
+            <!--Answers and Questions-->
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Answers</h5>
+                        </div>
+                        <div class="col">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light active">
+                                    <input type="radio" name="options" checked> Score
+                                </label>
+                                <label class="btn btn-light">
+                                    <input type="radio" name="options" > Activity
+                                </label>
+                                <label class="btn btn-light">
+                                    <input type="radio" name="options" > Newest
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="card col">
+                            <div class="card-body">
+                                <text>Some text</text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col ml-3">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Questions</h5>
+                        </div>
+                        <div class="col">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-light active">
+                                    <input type="radio" checked> Score
+                                </label>
+                                <label class="btn btn-light">
+                                    <input type="radio"> Activity
+                                </label>
+                                <label class="btn btn-light">
+                                    <input type="radio"> Newest
+                                </label>
+                                <label class="btn btn-light">
+                                    <input type="radio"> Views
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="card col">
+                            <div class="card-body">
+                                <text>Some text</text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Tags and reputation-->
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Tags</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card col">
+                            <div class="card-body">
+                                <text>Some text</text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col ml-3">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Reputation</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card col">
+                            <div class="card-body">
+                                <text>Some text</text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Badges-->
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Badges</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card col">
+                            <div class="card-body">
+                                <text>Some text</text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Bookmarks-->
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Bookmarks</h5>
+                        </div>
+                        <div class="col">
+                            <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                                <label class="btn btn-light active">
+                                    <input type="radio" name="options" checked> Score
+                                </label>
+                                <label class="btn btn-light">
+                                    <input type="radio" name="options" > Activity
+                                </label>
+                                <label class="btn btn-light">
+                                    <input type="radio" name="options" > Newest
+                                </label>
+                                <label class="btn btn-light">
+                                    <input type="radio" name="options" > Views
+                                </label>
+                                <label class="btn btn-light">
+                                    <input type="radio" name="options" > Added
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="card col">
+                            <div class="card-body">
+                                <text>Some text</text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Votes-->
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Votes cast</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card col">
+                            <div class="card-body">
+                                <text>Some text</text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<footer>
+    <script src="../templates/footer.js"></script>
+</footer>
+
+</body>
+</html>
