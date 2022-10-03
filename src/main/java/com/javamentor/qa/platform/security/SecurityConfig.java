@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -70,5 +71,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         registry.addMapping("/**")
                 .allowedOrigins("*")
                 .allowedMethods("*");
+    }
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+                .addResourceHandler("/templates/**")
+                .addResourceLocations("/templates/");
+        registry
+                .addResourceHandler("*/resources/templates/css/**")
+                .addResourceLocations("/css/");
+        registry
+                .addResourceHandler("*/resources/templates/js/**")
+                .addResourceLocations("/js/");
     }
 }
