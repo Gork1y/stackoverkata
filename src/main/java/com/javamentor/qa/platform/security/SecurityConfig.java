@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 // ограничиваем доступ api/user/** - разрешен только USER
                 .antMatchers("api/user/**").hasRole("USER")
                 // всем остальным разрешаем доступ
-                .antMatchers("/**").permitAll()
+                .antMatchers("/**", "/regpage").permitAll()
                 .and()
                 .logout()
                 .logoutUrl("/logout")
