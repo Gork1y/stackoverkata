@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Users - Stack Overkata</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+<!--НавБар-->
+<header class="mb-4" id="header">
+    <nav class="navbar navbar-light bg-light fixed-top shadow-sm rounded border-warning border-top">
+        <div class="container">
+            <a class="navbar-brand" style="width: 166px" href="#">Stackoaverkata</a>
+            <div class="btn-group btn-group-sm border-0" role="group" aria-label="Basic example">
+                <button type="button" class="btn text-secondary">Reputation</button>
+                <button type="button" class="btn text-secondary">Products</button>
+                <button type="button" class="btn text-secondary">For Teams</button>
+            </div>
+            <form class="form-inline w-50">
+                <input class="form-control mr-sm-2 w-100" type="search" placeholder="Search" aria-label="Search">
+            </form>
+            <div class="ml-auto">
+                <button type="button" class="btn btn-sm btn-primary-outline">Log in</button>
+                <button type="button" class="btn btn-sm btn-primary">Sign up</button>
+            </div>
+        </div>
+    </nav>
+</header>
+<br><br>
+
+<!--Основная часть-->
+<div class="container mb-4">
+    <div class="row">
+
+<!--        Панель слева-->
+        <div class="col-md-2 border-right small text-muted" id="sidebar" style="width: 166px">
+        <nav class="col d-none d-md-block bg-white sidebar" style="padding: 0">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <p class="text-secondary">Home</p>
+                        </a>
+                    </li>
+                    <span class="text-secondary text-uppercase">Public</span>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#">
+                            <span data-feather="globe"></span>
+                            <span class="text-secondary">Questions</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="text-secondary">Tags</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link bg-light" href="#">
+                            <span class="text-secondary" ><b>Users</b></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#">
+                            <p class="text-secondary">Companies</p>
+                        </a>
+                    </li>
+                    <span class="text-secondary text-uppercase">Collectives</span>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="text-secondary">Explore Collectives</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        </div>
+
+        <div class="col">
+            <h3 class="mb-4">Users</h3>
+
+    <!--        Строка с поиском-->
+            <div class="d-flex mb-4">
+                <div class="form-outline form-outline">
+                    <input type="search" id="filterByUser" class="form-control" placeholder="Filter by user" aria-label="Search" />
+                </div>
+
+                <div class="btn-group btn-group-sm ml-auto" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-outline-secondary active">Reputation</button>
+                    <button type="button" class="btn btn-outline-secondary">New users</button>
+                    <button type="button" class="btn btn-outline-secondary">Voters</button>
+                    <button type="button" class="btn btn-outline-secondary">Editors</button>
+                    <button type="button" class="btn btn-outline-secondary">Moderators</button>
+                </div>
+            </div>
+
+    <!--        Вкладки-->
+            <div class="d-flex mb-3">
+                <div class="ml-auto">
+                    <nav>
+                        <ul class="nav small text-muted">
+                            <li class="nav-item border-warning border-bottom">
+                                <a class="nav-link text-secondary font-weight-bold" aria-current="page" href="#">week</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary" href="#">month</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary" href="#">quarter</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary" href="#">year</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary" href="#">all</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+    <!--        Карточки-->
+            <div class="card-deck text-muted small">
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 border-0" style="max-width: 300px; min-width: 200px; height: 120px;">
+                    <div class="row no-gutters">
+                        <div style="width: 48px;">
+                            <img class="img-fluid" src="" alt="avatar.jpg">
+                        </div>
+                        <div class="mx-2">
+                            <a href="user">Nickname</a>
+                            <div class="card-text">City</div>
+                            <div class="card-text"><b>Reputation</b></div>
+                            <div class="card-text"><a href="tag">tags</a></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+    <!--        Строка под карточками-->
+            <div class="d-flex">
+
+                <a href="#"><small><b>weekly / monthly / quarterly reputation leagues</b></small></a>
+
+                <div class="btn-toolbar ml-auto" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group me-2" role="group" aria-label="Second group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary active">1</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">2</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">3</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">4</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">5</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary border-0">...</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Last</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Нижняя панель-->
+<footer class="fixed-bottom py-5" style="background-color: #222222" id=footer>
+    <div class="container">
+        <div class="row text-white">
+            <div class="col-12 col-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+                <small class="d-block mb-3 text-muted">&copy; 2022</small>
+            </div>
+            <div class="col-6 col-md">
+                <h5>STACK OVERKATA</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Cool stuff</a></li>
+                    <li><a class="text-muted" href="#">Random feature</a></li>
+                    <li><a class="text-muted" href="#">Team feature</a></li>
+                    <li><a class="text-muted" href="#">Stuff for developers</a></li>
+                    <li><a class="text-muted" href="#">Another one</a></li>
+                    <li><a class="text-muted" href="#">Last time</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>PRODUCTS</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Resource</a></li>
+                    <li><a class="text-muted" href="#">Resource name</a></li>
+                    <li><a class="text-muted" href="#">Another resource</a></li>
+                    <li><a class="text-muted" href="#">Final resource</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>COMPANY</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Business</a></li>
+                    <li><a class="text-muted" href="#">Education</a></li>
+                    <li><a class="text-muted" href="#">Government</a></li>
+                    <li><a class="text-muted" href="#">Gaming</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>STACK EXCHANGE NETWORK</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Team</a></li>
+                    <li><a class="text-muted" href="#">Locations</a></li>
+                    <li><a class="text-muted" href="#">Privacy</a></li>
+                    <li><a class="text-muted" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="js/sidebar.js"></script>
+<script type="text/javascript" src="js/header.js"></script>
+<script type="text/javascript" src="js/footer.js"></script>
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+</body>
+</html>
