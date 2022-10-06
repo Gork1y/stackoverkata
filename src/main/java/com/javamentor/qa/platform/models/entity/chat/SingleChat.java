@@ -1,38 +1,24 @@
 package com.javamentor.qa.platform.models.entity.chat;
 
-import com.javamentor.qa.platform.exception.ApiRequestException;
-import com.javamentor.qa.platform.models.entity.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.util.UUID;
+import javax.persistence.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
-import java.util.Objects;
+import com.javamentor.qa.platform.exception.ApiRequestException;
+import com.javamentor.qa.platform.models.entity.IdentifiableEntity;
+import com.javamentor.qa.platform.models.entity.user.User;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "singel_chat")
-public class SingleChat{
-
-    @Id
-    private Long id;
+public class SingleChat extends IdentifiableEntity<SingleChat, UUID> {
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @MapsId
-    private Chat chat = new Chat(ChatType.SINGLE);
+    private Chat chat = new Chat().setChatType(ChatType.SINGLE);
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private User userOne;
@@ -55,21 +41,5 @@ public class SingleChat{
             throw new ApiRequestException("У экземпляра Chat, связанного с SingleChat, " +
                     "поле chatType должно принимать значение ChatType.SINGLE");
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SingleChat that = (SingleChat) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(chat, that.chat) &&
-                Objects.equals(userOne, that.userOne) &&
-                Objects.equals(useTwo, that.useTwo);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, chat, userOne, useTwo);
     }
 }

@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="20220510-1401-create-table-role" author="gorkiy">
+        <sql>
+            CREATE TABLE "role"
+            (
+                id     uuid NOT NULL DEFAULT gen_random_uuid(),
+                "name" varchar(255) NULL,
+                CONSTRAINT role_pkey PRIMARY KEY (id)
+            );
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1402-create-table-user" author="gorkiy">
+        <sql>
+            CREATE TABLE user_entity
+            (
+                id                  uuid      NOT NULL DEFAULT gen_random_uuid(),
+                about               varchar(255) NULL,
+                city                varchar(255) NULL,
+                email               varchar(255) NULL,
+                full_name           varchar(255) NULL,
+                image_link          varchar(255) NULL,
+                is_deleted          bool NULL,
+                is_enabled          bool NULL,
+                last_redaction_date timestamp NOT NULL default now(),
+                link_git_hub        varchar(255) NULL,
+                link_site           varchar(255) NULL,
+                link_vk             varchar(255) NULL,
+                nickname            varchar(255) NULL,
+                "password"          varchar(255) NULL,
+                persist_date        timestamp NOT NULL default now(),
+                role_id             uuid      NOT NULL,
+                CONSTRAINT user_entity_pkey PRIMARY KEY (id),
+                CONSTRAINT fkpostrnt7qdgc4m56i71qlkl61 FOREIGN KEY (role_id) REFERENCES "role" (id)
+            )
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1403-create-table-badges" author="gorkiy">
+        <sql>
+            CREATE TABLE badges
+            (
+                id                   uuid NOT NULL DEFAULT gen_random_uuid(),
+                badge_name           varchar(255) NULL,
+                description          varchar(255) NULL,
+                reputation_for_merit int4 NULL,
+                CONSTRAINT badges_pkey PRIMARY KEY (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1404-create-table-chat" author="gorkiy">
+        <sql>
+            CREATE TABLE chat
+            (
+                id           uuid NOT NULL DEFAULT gen_random_uuid(),
+                chat_type    int4 NULL,
+                persist_date timestamp NULL,
+                title        varchar(255) NULL,
+                CONSTRAINT chat_pkey PRIMARY KEY (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1405-create-table-tag" author="gorkiy">
+        <sql>
+            CREATE TABLE tag
+            (
+                id           uuid NOT NULL DEFAULT gen_random_uuid(),
+                description  varchar(255) NULL,
+                "name"       varchar(255) NULL,
+                persist_date timestamp NULL,
+                CONSTRAINT tag_pkey PRIMARY KEY (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1406-create-table-group-chat" author="gorkiy">
+        <sql>
+            CREATE TABLE group_chat
+            (
+                chat_id uuid NOT NULL DEFAULT gen_random_uuid(),
+                CONSTRAINT group_chat_pkey PRIMARY KEY (chat_id),
+                CONSTRAINT fkhwhjdn057057sx83g73m0iag5 FOREIGN KEY (chat_id) REFERENCES chat (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1407-create-table-related-tag" author="gorkiy">
+        <sql>
+            CREATE TABLE related_tag
+            (
+                id        uuid NOT NULL DEFAULT gen_random_uuid(),
+                child_tag uuid NOT NULL,
+                main_tag  uuid NOT NULL,
+                CONSTRAINT related_tag_pkey PRIMARY KEY (id),
+                CONSTRAINT fkk5320uu5wbdyg2xku67qp8aqe FOREIGN KEY (child_tag) REFERENCES tag (id),
+                CONSTRAINT fknb1cmjyv0amiv491xlx4xi6w1 FOREIGN KEY (main_tag) REFERENCES tag (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1408-create-table-comment" author="gorkiy">
+        <sql>
+            CREATE TABLE "comment"
+            (
+                id                  uuid NOT NULL DEFAULT gen_random_uuid(),
+                comment_type        int4 NULL,
+                last_redaction_date timestamp NULL,
+                persist_date        timestamp NULL,
+                "text"              varchar(255) NULL,
+                user_id             uuid NOT NULL,
+                CONSTRAINT comment_pkey PRIMARY KEY (id),
+                CONSTRAINT fkl4xlhaqa07wrvf446sjwngh8j FOREIGN KEY (user_id) REFERENCES user_entity (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1409-create-table-groupchat-has-users" author="gorkiy">
+        <sql>
+            CREATE TABLE groupchat_has_users
+            (
+                chat_id uuid NOT NULL,
+                user_id uuid NOT NULL,
+                CONSTRAINT groupchat_has_users_pkey PRIMARY KEY (chat_id, user_id),
+                CONSTRAINT fk2rtdyfisemfv23xnmsxopptng FOREIGN KEY (chat_id) REFERENCES group_chat (chat_id),
+                CONSTRAINT fkd1tr2cxaudn9q2ea52ydi3sea FOREIGN KEY (user_id) REFERENCES user_entity (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1410-create-table-message" author="gorkiy">
+        <sql>
+            CREATE TABLE message
+            (
+                id                  uuid      NOT NULL DEFAULT gen_random_uuid(),
+                last_redaction_date timestamp NOT NULL,
+                message             text NULL,
+                persist_date        timestamp NULL,
+                chat_id             uuid      NOT NULL,
+                user_sender_id      uuid      NOT NULL,
+                CONSTRAINT message_pkey PRIMARY KEY (id),
+                CONSTRAINT fklgr15f5qgibclatnawcadb4x9 FOREIGN KEY (user_sender_id) REFERENCES user_entity (id),
+                CONSTRAINT fkmejd0ykokrbuekwwgd5a5xt8a FOREIGN KEY (chat_id) REFERENCES chat (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1411-create-table-question" author="gorkiy">
+        <sql>
+            CREATE TABLE question
+            (
+                id                  uuid      NOT NULL DEFAULT gen_random_uuid(),
+                description         text NULL,
+                is_deleted          bool NULL,
+                last_redaction_date timestamp NOT NULL,
+                persist_date        timestamp NULL,
+                title               varchar(255) NULL,
+                user_id             uuid      NOT NULL,
+                CONSTRAINT question_pkey PRIMARY KEY (id),
+                CONSTRAINT fktg7oxllrdp5tf8isrfmory7yo FOREIGN KEY (user_id) REFERENCES user_entity (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1412-create-table-question-has-teg" author="gorkiy">
+        <sql>
+            CREATE TABLE question_has_tag
+            (
+                question_id uuid NOT NULL,
+                tag_id      uuid NOT NULL,
+                CONSTRAINT fk95qkp3v84rs97v7alcfk77fdr FOREIGN KEY (question_id) REFERENCES question (id),
+                CONSTRAINT fkrg80k8r5dshnsufpxu1p0d8gp FOREIGN KEY (tag_id) REFERENCES tag (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1413-create-table-question-viewed" author="gorkiy">
+        <sql>
+            CREATE TABLE question_viewed
+            (
+                id           uuid NOT NULL DEFAULT gen_random_uuid(),
+                persist_date timestamp NULL,
+                question_id  uuid NULL,
+                user_id      uuid NULL,
+                CONSTRAINT question_viewed_pkey PRIMARY KEY (id),
+                CONSTRAINT fknw7lp8384y34tnaulsvmmfnub FOREIGN KEY (user_id) REFERENCES user_entity (id),
+                CONSTRAINT fkqeg29r7uu1g1flepcpm4mv1g2 FOREIGN KEY (question_id) REFERENCES question (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1414-create-table-single-chat" author="gorkiy">
+        <sql>
+            CREATE TABLE singel_chat
+            (
+                chat_id     uuid NOT NULL,
+                use_two_id  uuid NOT NULL,
+                user_one_id uuid NOT NULL,
+                CONSTRAINT singel_chat_pkey PRIMARY KEY (chat_id),
+                CONSTRAINT fk6nto53owdiythxo2h6dkbvu4t FOREIGN KEY (use_two_id) REFERENCES user_entity (id),
+                CONSTRAINT fkl2cp5kdbj6ym2wgsgi218jej3 FOREIGN KEY (chat_id) REFERENCES chat (id),
+                CONSTRAINT fklyuqnigj07exf26a7f0dakusa FOREIGN KEY (user_one_id) REFERENCES user_entity (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1415-create-table-tag-ignore" author="gorkiy">
+        <sql>
+            CREATE TABLE tag_ignore
+            (
+                id             uuid NOT NULL DEFAULT gen_random_uuid(),
+                persist_date   timestamp NULL,
+                ignored_tag_id uuid NOT NULL,
+                user_id        uuid NOT NULL,
+                CONSTRAINT tag_ignore_pkey PRIMARY KEY (id),
+                CONSTRAINT fk7wnisc677h8s3wb6o4mv2oqkf FOREIGN KEY (ignored_tag_id) REFERENCES tag (id),
+                CONSTRAINT fkjjdrwp57ok5c1ckuwqsft1qxf FOREIGN KEY (user_id) REFERENCES user_entity (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1416-create-table-tag-tracked" author="gorkiy">
+        <sql>
+            CREATE TABLE tag_tracked
+            (
+                id             uuid NOT NULL DEFAULT gen_random_uuid(),
+                persist_date   timestamp NULL,
+                tracked_tag_id uuid NOT NULL,
+                user_id        uuid NOT NULL,
+                CONSTRAINT tag_tracked_pkey PRIMARY KEY (id),
+                CONSTRAINT fki60fykn402bntk377q2t9ybde FOREIGN KEY (user_id) REFERENCES user_entity (id),
+                CONSTRAINT fkpn5ysi8igj9rmnun213hg5uf FOREIGN KEY (tracked_tag_id) REFERENCES tag (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1417-create-table-user-badges" author="gorkiy">
+        <sql>
+            CREATE TABLE user_badges
+            (
+                id        uuid NOT NULL DEFAULT gen_random_uuid(),
+                ready     bool NULL,
+                badges_id uuid NULL,
+                user_id   uuid NULL,
+                CONSTRAINT user_badges_pkey PRIMARY KEY (id),
+                CONSTRAINT fk337cc9ux9pqlb991y6w43to3j FOREIGN KEY (badges_id) REFERENCES badges (id),
+                CONSTRAINT fkfb1c6pv1fesnielua9xtgci76 FOREIGN KEY (user_id) REFERENCES user_entity (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1418-create-table-user-favorite-question" author="gorkiy">
+        <sql>
+            CREATE TABLE user_favorite_question
+            (
+                id           uuid      NOT NULL DEFAULT gen_random_uuid(),
+                persist_date timestamp NOT NULL,
+                question_id  uuid      NOT NULL,
+                user_id      uuid      NOT NULL,
+                CONSTRAINT user_favorite_question_pkey PRIMARY KEY (id),
+                CONSTRAINT fklp6cfgrasgyon52khtdjjgi02 FOREIGN KEY (question_id) REFERENCES question (id),
+                CONSTRAINT fknhawqa1q89ai58etpxjbvlt3c FOREIGN KEY (user_id) REFERENCES user_entity (id)
+            );
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1419-create-table-votes-on-questions" author="gorkiy">
+        <sql>
+            CREATE TABLE votes_on_questions
+            (
+                id           uuid NOT NULL DEFAULT gen_random_uuid(),
+                persist_date timestamp NULL,
+                vote         varchar(255) NULL,
+                question_id  uuid NULL,
+                user_id      uuid NULL,
+                CONSTRAINT votes_on_questions_pkey PRIMARY KEY (id),
+                CONSTRAINT fk5rc898att1153186h64v2lym2 FOREIGN KEY (user_id) REFERENCES user_entity (id),
+                CONSTRAINT fkiu40gq78m9r2n8nmwnefjxyry FOREIGN KEY (question_id) REFERENCES question (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1420-create-table-answer" author="gorkiy">
+        <sql>
+            CREATE TABLE answer
+            (
+                id                      uuid      NOT NULL DEFAULT gen_random_uuid(),
+                date_accept_time        timestamp NULL,
+                html_body               text NULL,
+                is_deleted              bool NULL,
+                is_deleted_by_moderator bool NULL,
+                is_helpful              bool NULL,
+                persist_date            timestamp NULL,
+                update_date             timestamp NOT NULL,
+                question_id             uuid      NOT NULL,
+                user_id                 uuid      NOT NULL,
+                CONSTRAINT answer_pkey PRIMARY KEY (id),
+                CONSTRAINT fk2k36bpxtxus6sxyg8mlof5js1 FOREIGN KEY (user_id) REFERENCES user_entity (id),
+                CONSTRAINT fk8frr4bcabmmeyyu60qt7iiblo FOREIGN KEY (question_id) REFERENCES question (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1421-create-table-bookmarks" author="gorkiy">
+        <sql>
+            CREATE TABLE bookmarks
+            (
+                id          uuid NOT NULL DEFAULT gen_random_uuid(),
+                question_id uuid NOT NULL,
+                user_id     uuid NOT NULL,
+                CONSTRAINT bookmarks_pkey PRIMARY KEY (id),
+                CONSTRAINT fklo0de495ruc6wr4j8uim9fc2e FOREIGN KEY (user_id) REFERENCES user_entity (id),
+                CONSTRAINT fkmge2txjhd0hq1ji859u0ylwyw FOREIGN KEY (question_id) REFERENCES question (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1422-create-table-comment-answer" author="gorkiy">
+        <sql>
+            CREATE TABLE comment_answer
+            (
+                comment_id uuid NOT NULL,
+                answer_id  uuid NOT NULL,
+                CONSTRAINT comment_answer_pkey PRIMARY KEY (comment_id),
+                CONSTRAINT fkdqdik3krvw5227fq8oiei7vn4 FOREIGN KEY (answer_id) REFERENCES answer (id),
+                CONSTRAINT fkoe2xyxejln3qgk05w6y3pih6j FOREIGN KEY (comment_id) REFERENCES "comment" (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1423-create-table-comment-question" author="gorkiy">
+        <sql>
+            CREATE TABLE comment_question
+            (
+                comment_id  uuid NOT NULL,
+                question_id uuid NOT NULL,
+                CONSTRAINT comment_question_pkey PRIMARY KEY (comment_id),
+                CONSTRAINT fk2ob5qywtuo1093g7ql5kfx3rk FOREIGN KEY (comment_id) REFERENCES "comment" (id),
+                CONSTRAINT fkup4pc0f37svsrid4lwxkeqf2 FOREIGN KEY (question_id) REFERENCES question (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1424-create-table-reputation" author="gorkiy">
+        <sql>
+            CREATE TABLE reputation
+            (
+                id           uuid NOT NULL DEFAULT gen_random_uuid(),
+                count        int4 NULL,
+                persist_date timestamp NULL,
+                "type"       int4 NULL,
+                answer_id    uuid NULL,
+                author_id    uuid NULL,
+                question_id  uuid NULL,
+                sender_id    uuid NULL,
+                CONSTRAINT reputation_pkey PRIMARY KEY (id),
+                CONSTRAINT fklndsyfrqg3b6g87gplymx8y6r FOREIGN KEY (author_id) REFERENCES user_entity (id),
+                CONSTRAINT fkolofwdfwvpjawwa9gpfvtycwf FOREIGN KEY (question_id) REFERENCES question (id),
+                CONSTRAINT fkqm7j2hn9g8f57qjvw5r1vebcs FOREIGN KEY (sender_id) REFERENCES user_entity (id),
+                CONSTRAINT fksqo308es5w7bvg914o1mwrn2m FOREIGN KEY (answer_id) REFERENCES answer (id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1425-create-table-votes-on-answers" author="gorkiy">
+        <sql>
+            CREATE TABLE votes_on_answers
+            (
+                id           uuid NOT NULL DEFAULT gen_random_uuid(),
+                persist_date timestamp NULL,
+                vote_type    varchar(255) NULL,
+                answer_id    uuid NOT NULL,
+                user_id      uuid NOT NULL,
+                CONSTRAINT votes_on_answers_pkey PRIMARY KEY (id),
+                CONSTRAINT fki8gxkndohkt08w93qkx756d8e FOREIGN KEY (user_id) REFERENCES user_entity (id),
+                CONSTRAINT fkjyyufwvq2xtar6hhcajuv73f9 FOREIGN KEY (answer_id) REFERENCES answer (id)
+            );
+        </sql>
+    </changeSet>
+</databaseChangeLog>

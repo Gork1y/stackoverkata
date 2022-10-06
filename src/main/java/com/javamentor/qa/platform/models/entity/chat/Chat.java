@@ -1,60 +1,45 @@
 package com.javamentor.qa.platform.models.entity.chat;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Type;
-
+import java.time.LocalDateTime;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
+import com.javamentor.qa.platform.models.entity.IdentifiableEntity;
+
+import lombok.Getter;
 
 @Entity
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "chat")
-public class Chat {
+public class Chat  extends IdentifiableEntity<Chat, UUID> {
 
-    @Id
-    @GeneratedValue(generator = "Chat_seq")
-    private Long id;
-
-    @Column
     private String title;
 
-    @Column(name = "persist_date", updatable = false)
+    @Column(updatable = false)
     @Type(type = "org.hibernate.type.LocalDateTimeType")
     @CreationTimestamp
     private LocalDateTime persistDate;
 
     @Enumerated
-    @Column
     private ChatType chatType;
 
+    public Chat setTitle(String title) {
+        this.title = title;
+        return this;
+    }
 
-    public Chat(ChatType chatType) {
+    public Chat setPersistDate(LocalDateTime persistDate) {
+        this.persistDate = persistDate;
+        return this;
+    }
+
+    public Chat setChatType(ChatType chatType) {
         this.chatType = chatType;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Chat)) return false;
-        Chat chat = (Chat) o;
-        return id != null &&
-                id.equals(chat.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
+        return this;
     }
 }
