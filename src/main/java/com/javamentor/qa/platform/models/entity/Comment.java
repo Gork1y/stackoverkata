@@ -1,47 +1,25 @@
 package com.javamentor.qa.platform.models.entity;
 
-import com.javamentor.qa.platform.models.entity.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.UUID;
+import javax.persistence.*;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
+import com.javamentor.qa.platform.models.entity.user.User;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Objects;
+import lombok.Getter;
 
 @Entity
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "comment")
-public class Comment implements Serializable {
+public class Comment extends IdentifiableEntity<BookMarks, UUID> implements Serializable {
 
-    @Id
-    @GeneratedValue(generator = "Comment_seq")
-    private Long id;
-
-
-    @NotNull
-    @Column
     private String text;
 
     @Enumerated
-    @NotNull
-    @Column//(columnDefinition = "smallint")
     private CommentType commentType;
 
     @Column(name = "persist_date", updatable = false)
@@ -57,23 +35,28 @@ public class Comment implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private User user;
 
-    public Comment(CommentType commentType) {
+    public Comment setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public Comment setCommentType(CommentType commentType) {
         this.commentType = commentType;
+        return this;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Comment comment = (Comment) o;
-        return Objects.equals(id, comment.id) &&
-                Objects.equals(text, comment.text) &&
-                Objects.equals(persistDateTime, comment.persistDateTime) &&
-                Objects.equals(lastUpdateDateTime, comment.lastUpdateDateTime);
+    public Comment setPersistDateTime(LocalDateTime persistDateTime) {
+        this.persistDateTime = persistDateTime;
+        return this;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, text, persistDateTime, lastUpdateDateTime);
+    public Comment setLastUpdateDateTime(LocalDateTime lastUpdateDateTime) {
+        this.lastUpdateDateTime = lastUpdateDateTime;
+        return this;
+    }
+
+    public Comment setUser(User user) {
+        this.user = user;
+        return this;
     }
 }

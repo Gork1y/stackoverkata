@@ -1,45 +1,26 @@
 package com.javamentor.qa.platform.models.entity.question;
 
-import com.javamentor.qa.platform.exception.ConstrainException;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Type;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
+import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
+import com.javamentor.qa.platform.exception.ConstrainException;
+import com.javamentor.qa.platform.models.entity.IdentifiableEntity;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "tag")
-public class Tag implements Serializable {
+public class Tag extends IdentifiableEntity<Tag, UUID> implements Serializable {
 
-    @Id
-    @GeneratedValue(generator = "Tag_seq")
-    private Long id;
-
-    @NotNull
-    @Column
     private String name;
-
-    @Column
     private String description;
 
     @CreationTimestamp
@@ -68,21 +49,4 @@ public class Tag implements Serializable {
             throw new ConstrainException("Поле name не должно быть пустым");
         }
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Tag tag = (Tag) o;
-        return Objects.equals(id, tag.id) &&
-                Objects.equals(name, tag.name) &&
-                Objects.equals(description, tag.description) &&
-                Objects.equals(persistDateTime, tag.persistDateTime);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, description, persistDateTime);
-    }
-
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="20220510-1400-init-role" author="gorkiy">
+        <sql>
+            INSERT INTO "role" ("name")
+            VALUES ('ROLE_USER'),
+                   ('ROLE_ADMIN');
+        </sql>
+    </changeSet>
+
+    <changeSet id="20220510-1401-init-user" author="gorkiy">
+        <sql>
+            INSERT INTO user_entity (about, city, email, full_name, image_link, is_deleted, is_enabled,
+                                     link_git_hub, link_site, link_vk, nickname, "password",
+                                     role_id)
+            VALUES (NULL, NULL, 'user@email.com', 'user', NULL, false, true,
+                    NULL, NULL, NULL, 'user',
+                    '$2a$12$jqu.8Wq7vvOwwRYPDB0Ij.1lnXhY4dsJ2I1Pl7ONxkPPdW33dYSJ.', -- password user:111
+                    (select r.id from "role" r where r."name" = 'ROLE_USER')),
+                   (NULL, NULL, 'admin@email.com', 'admin', NULL, false, true,
+                    NULL, NULL, NULL, 'admin',
+                    '$2a$12$jqu.8Wq7vvOwwRYPDB0Ij.1lnXhY4dsJ2I1Pl7ONxkPPdW33dYSJ.', -- password admin:111
+                    (select r.id from "role" r where r."name" = 'ROLE_ADMIN'));
+        </sql>
+    </changeSet>
+</databaseChangeLog>
