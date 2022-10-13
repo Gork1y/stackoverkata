@@ -1,8 +1,8 @@
 package com.javamentor.qa.platform.security;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,21 +11,30 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import com.javamentor.qa.platform.security.jwt.JwtTokenFilter;
+
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
+    private final JwtTokenFilter jwtTokenFilter;
     private final UserDetailsServiceImpl userDetailsService;
 
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        authenticationManagerBuilder.userDetailsService(userDetailsService);
     }
 
     @Bean
@@ -48,22 +57,47 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+//       -- disable security--
+//        http
+//                .csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/**").permitAll();
+
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
         filter.setEncoding("UTF-8");
         filter.setForceEncoding(true);
-        http.csrf().disable();
-        http.cors().disable();
+
         http
-                // делаем страницу регистрации недоступной для авторизированных пользователей
+                .csrf().disable()
+                .cors()
+                .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                .and()
                 .authorizeRequests()
-                // ограничиваем доступ api/user/** - разрешен только USER
-                .antMatchers("api/user/**").hasRole("USER")
-                // всем остальным разрешаем доступ
-                .antMatchers("/**", "/regpage").permitAll()
+                .antMatchers("/api/auth/token").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/")
+                .and()
+                .addFilterBefore(
+                        jwtTokenFilter,
+                        UsernamePasswordAuthenticationFilter.class);
+    }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("*");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
     }
 
     @Override
@@ -72,6 +106,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .allowedOrigins("*")
                 .allowedMethods("*");
     }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
@@ -84,4 +119,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .addResourceHandler("*/resources/templates/js/**")
                 .addResourceLocations("/js/");
     }
+
+
 }
