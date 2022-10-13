@@ -13,4 +13,7 @@ public class UserController {
         model.addAttribute("newUser", new User());
         return "regpage";
     }
+
+
+
 }
