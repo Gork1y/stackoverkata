@@ -1,4 +1,4 @@
-package com.javamentor.qa.platform.controller;
+package com.javamentor.qa.platform.webapp.controllers.rest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
