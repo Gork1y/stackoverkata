@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TagDtoDao extends ReadWriteDao<RelatedTagDto, Long> {
 
-    List<RelatedTagDto> getTopTags();
+    List<RelatedTagDto> getTop10Tags();
 }

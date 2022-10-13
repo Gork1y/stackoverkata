@@ -11,7 +11,8 @@ import java.util.List;
 
 @Service
 public class TagDtoServiceImpl extends ReadWriteServiceImpl<RelatedTagDto, Long> implements TagDtoService {
-    TagDtoDao tagDtoDao;
+
+    private final TagDtoDao tagDtoDao;
 
     public TagDtoServiceImpl(ReadWriteDao<RelatedTagDto, Long> readWriteDao, TagDtoDao tagDtoDao) {
         super(readWriteDao);
@@ -19,7 +20,7 @@ public class TagDtoServiceImpl extends ReadWriteServiceImpl<RelatedTagDto, Long>
     }
 
     @Override
-    public List<RelatedTagDto> getTopTags() {
-        return tagDtoDao.getTopTags();
+    public List<RelatedTagDto> getTop10Tags() {
+        return tagDtoDao.getTop10Tags();
     }
 }

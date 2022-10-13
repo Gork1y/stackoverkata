@@ -24,7 +24,7 @@ public class TestDataInitService {
     @Transactional
     @PostConstruct
     public void createEntity() {
-        createUsers();
+//        createUsers();
     }
 
     public PasswordEncoder passwordEncoder() {

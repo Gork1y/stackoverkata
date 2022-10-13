@@ -15,14 +15,15 @@ public class TagDtoDaoImpl extends ReadWriteDaoImpl<RelatedTagDto, Long> impleme
     @PersistenceContext
     private EntityManager entityManager;
 
-
     @Override
-    public List<RelatedTagDto> getTopTags() {
+    public List<RelatedTagDto> getTop10Tags() {
         return entityManager.createQuery("""
-                        SELECT new com.javamentor.qa.platform.models.dto.RelatedTagDto(t.id, t.description, t.questions.size)
-                        FROM Tag t
-                        group by t.id, t.description, t.questions.size
-                        order by t.questions.size desc"""
-                , RelatedTagDto.class).setMaxResults(10).getResultList();
+                SELECT new com.javamentor.qa.platform.models.dto.RelatedTagDto(t.id, t.description, t.questions.size)
+                FROM Tag t
+                GROUP BY t.id, t.description, t.questions.size
+                ORDER BY t.questions.size DESC
+                """, RelatedTagDto.class)
+                .setMaxResults(10)
+                .getResultList();
     }
 }

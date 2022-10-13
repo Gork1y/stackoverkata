@@ -1,4 +1,4 @@
-package com.javamentor.qa.platform.controller.rest;
+package com.javamentor.qa.platform.webapp.controllers.rest;
 
 import com.javamentor.qa.platform.service.abstracts.model.QuestionService;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -10,11 +10,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class QuestionDtoServiceImpl extends ReadWriteServiceImpl<QuestionDto, Long> implements QuestionDtoService {
 
-    QuestionDtoDao questionDtoDao;
+    private final QuestionDtoDao questionDtoDao;
 
     public QuestionDtoServiceImpl(ReadWriteDao<QuestionDto, Long> readWriteDao,
                                   QuestionDtoDao questionDtoDao) {
@@ -24,13 +25,13 @@ public class QuestionDtoServiceImpl extends ReadWriteServiceImpl<QuestionDto, Lo
 
     @Override
     public Optional<QuestionDto> getById(Long questionId, Authentication auth) {
-        Long authorizedUserId;
+        UUID authorizedUserId;
         if (auth != null) {
             User user = (User) auth.getPrincipal();
             authorizedUserId = user.getId();
         } else {
             authorizedUserId = null;
         }
-        return questionDtoDao.getById(questionId, authorizedUserId);
+        return questionDtoDao.getById(questionId, authorizedUserId.node());
     }
 }
