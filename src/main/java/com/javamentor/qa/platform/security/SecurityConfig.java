@@ -32,6 +32,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
     private final JwtTokenFilter jwtTokenFilter;
     private final UserDetailsServiceImpl userDetailsService;
 
+    private final static String[] AUTH_WHITELIST = {
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/swagger-ui*/**",
+            "/swagger-ui.html",
+            "/v2/**",
+            "/v3/**",
+            "/api/auth/token"
+    };
+
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.userDetailsService(userDetailsService);
@@ -75,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/auth/token").permitAll()
+                .antMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout()
