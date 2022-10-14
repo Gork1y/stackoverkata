@@ -39,7 +39,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
             "/swagger-ui.html",
             "/v2/**",
             "/v3/**",
-            "/api/auth/token"
+            "/api/auth/token",
+            "/js/*",
+            "/login",
+            "/registration",
+            "/api/user/registration/**"
     };
 
     @Override

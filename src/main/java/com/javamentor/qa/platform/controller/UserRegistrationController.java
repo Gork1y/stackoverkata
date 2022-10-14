@@ -47,16 +47,16 @@ public class UserRegistrationController {
     @GetMapping("/verify/{email}")
     public String verify(@PathVariable String email) {
         if (userService.getByEmail(email).isEmpty()) {
-            return "regpage";
+            return "redirect:/registration";
         }
         User user = userService.getByEmail(email).get();
         if (user.getPersistDateTime().plusMinutes(expiration).isBefore(LocalDateTime.now())) {
             System.out.println("Время подтверждения аккаута истекло, зарегистрируйтесь заного");
-            return "regpage";
+            return "redirect:/registration";
         }
         user.setIsEnabled(true);
         userService.persist(user);
-        return "login";
+        return "redirect:/login";
     }
 
     @PostMapping("/sendMessage")
