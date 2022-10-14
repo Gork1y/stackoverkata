@@ -33,9 +33,9 @@ public class User extends IdentifiableEntity<User, UUID> implements UserDetails 
     @CreationTimestamp
     private LocalDateTime persistDateTime;
 
-    private Boolean isEnabled = true;
+    private Boolean isEnabled;
 
-    private Boolean isDeleted = false;
+    private Boolean isDeleted;
 
     private String city;
 

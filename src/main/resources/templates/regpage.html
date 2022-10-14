@@ -63,21 +63,21 @@
                             Sign up with Facebook
                         </button>
 
-                        <form class="bg-white p-4 my-3 rounded">
+                        <form class="bg-white p-4 my-3 rounded" id="newUserForm">
                             <div class="form-group">
-                                <label for="newUserNickname"><b>Display name</b></label>
-                                <input type="text" class="form-control" id="newUserNickname">
+                                <label for="newUserFullName"><b>Full name</b></label>
+                                <input type="text" class="form-control" id="newUserFullName" name="fullName">
                             </div>
 
                             <div class="form-group">
                                 <label for="newUserEmail"><b>Email address</b></label>
-                                <input type="email" class="form-control" id="newUserEmail"
+                                <input type="email" class="form-control" id="newUserEmail" name="email"
                                        aria-describedby="emailHelp">
                             </div>
 
                             <div class="form-group">
                                 <label for="newUserPassword"><b>Password</b></label>
-                                <input type="password" class="form-control" id="newUserPassword">
+                                <input type="password" class="form-control" id="newUserPassword" name="password">
                                 <small id="passwordHelp" class="form-text text-muted">Passwords must contain at
                                     least eight characters, including at least 1 letter and 1 number.</small>
                             </div>
@@ -101,9 +101,6 @@
     </div>
 </div>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/scripts.js"></script>
+<script src="/js/registrationNewUser.js"></script>
 </body>
-
 </html>
