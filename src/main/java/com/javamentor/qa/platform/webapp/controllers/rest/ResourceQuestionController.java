@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -32,7 +33,7 @@ public class ResourceQuestionController {
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = QuestionDto.class)))
     @ApiResponse(responseCode = "400", description = "Вопроса по ID не существует")
-    public ResponseEntity<QuestionDto> getQuestion(@PathVariable("id") Long questionId, Authentication auth) {
+    public ResponseEntity<QuestionDto> getQuestion(@PathVariable("id") UUID questionId, Authentication auth) {
         Optional<QuestionDto> questionDto = questionDtoService.getById(questionId, auth);
         return questionDto.map(dto -> new ResponseEntity<>(dto, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
