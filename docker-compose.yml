@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  postgres_db:
+    container_name: postgres_db
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "stackoverkata"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "root"
+    ports:
+      - 5432:5432
+    networks:
+      - kata
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@mail.ru"
+      PGADMIN_DEFAULT_PASSWORD: "root"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - 5050:80
+    networks:
+      - kata
+
+networks:
+  kata:
+    driver: bridge

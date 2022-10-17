@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+
+
+<html class="html__responsive " lang="ru">
+
+<head>
+
+  <title>Вопросы</title>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/ru/Img/favicon.ico?v=92117f9cb35c">
+  <script type="text/javascript" src="../static/js/styles.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css?v=5ad0f45f4799">
+  <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/ru/primary.css?v=14a33b4ac9f9">
+  <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/Channels/channels.css?v=d098999fc478">
+
+
+</head>
+
+<body class="questions-page unified-theme">
+
+<div class="container" id="main-container">
+  <div id="mainbar" role="main" aria-labelledby="h-all-questions">
+
+
+
+
+    <div class="d-flex fw-wrap mb12">
+      <h1 class="flex--item fl1 fs-headline1 mr12 mb12">&#x412;&#x441;&#x435; &#x432;&#x43E;&#x43F;&#x440;&#x43E;&#x441;&#x44B;</h1>
+      <div class="aside-cta flex--item mb12 print:d-none">
+        <a href="/questions/ask" class="ws-nowrap s-btn s-btn__primary">
+          &#x417;&#x430;&#x434;&#x430;&#x442;&#x44C; &#x432;&#x43E;&#x43F;&#x440;&#x43E;&#x441;
+        </a>
+
+      </div>
+    </div>
+
+
+
+    <script type="application/json" data-role="module-args" data-module-name="entry-points/questions/userQuestionList.mod">{"regularTagsString":"","moderatorTagsString":""}</script>
+    <script defer src="https://cdn.sstatic.net/Js/questions/userQuestionList.ru.js?v=1a5d82ac89e4"></script>
+
+    <div data-controller="se-uql" data-se-uql-id="" data-se-uql-sanitize-tag-query="false">
+      <div class="d-flex ai-center jc-space-between mb12 sm:fd-column sm:ai-stretch">
+        <div class="fs-body3 flex--item fl1 mr12 sm:mr0 sm:mb12">
+          0
+          &#x432;&#x43E;&#x43F;&#x440;&#x43E;&#x441;&#x43E;&#x432;
+        </div>
+
+        <div class="uql-nav flex--item"
+             data-action="se-uql-list:edit-current-requested@document->se-uql#toggleEditor">
+          <div class="d-flex ai-center jc-space-between">
+            <div class="js-uql-navigation s-btn-group flex--item mr16 ff-row-nowrap">
+              <a class="s-btn s-btn__muted s-btn__outlined s-btn__sm d-flex is-selected" data-nav-value="Newest" href="/questions?tab=Newest" data-shortcut="N" aria-current="page">
+                <div class="flex--item">&#x41D;&#x43E;&#x432;&#x44B;&#x435;</div>
+              </a>
+              <a class="s-btn s-btn__muted s-btn__outlined s-btn__sm d-flex" data-nav-value="Active" href="/questions?tab=Active" data-shortcut="A">
+                <div class="flex--item">&#x422;&#x435;&#x43A;&#x443;&#x449;&#x438;&#x435;</div>
+              </a>
+              <a class="s-btn s-btn__muted s-btn__outlined s-btn__sm d-flex uql-nav--expanded-item" data-nav-value="Bounties" href="/questions?tab=Bounties" data-shortcut="E">
+                <div class="flex--item">&#x41A;&#x43E;&#x43D;&#x43A;&#x443;&#x440;&#x441;&#x43D;&#x44B;&#x435;</div>
+              </a>
+              <a class="s-btn s-btn__muted s-btn__outlined s-btn__sm d-flex uql-nav--expanded-item" data-nav-value="Unanswered" href="/questions?tab=Unanswered" data-shortcut="U">
+                <div class="flex--item">&#x41D;&#x435;&#x43E;&#x442;&#x432;&#x435;&#x447;&#x435;&#x43D;&#x43D;&#x44B;&#x435;</div>
+              </a>
+              <button class="s-btn s-btn__muted s-btn__outlined s-btn__sm s-btn__dropdown"
+                      role="button"
+                      data-controller="s-popover"
+                      data-action="s-popover#toggle"
+                      data-se-uql-target="toggleMoreButton"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      aria-controls="uql-more-popover">
+                &#x415;&#x449;&#x451;
+              </button>
+            </div>
+
+            <div class="s-popover z-dropdown ws2 px0 py4"
+                 id="uql-more-popover"
+                 data-se-uql-target="morePopover">
+              <div class="s-popover--arrow"></div>
+              <ul class="s-menu js-uql-navigation" role="menu">
+                <li class=" uql-nav--collapsed-item" role="menuitem">
+                  <a href="/questions?tab=Bounties" class="s-block-link s-block-link__left" data-shortcut="">
+                    &#x41A;&#x43E;&#x43D;&#x43A;&#x443;&#x440;&#x441;&#x43D;&#x44B;&#x435;
+                    <span class="s-badge s-badge__bounty s-badge__bounty s-badge__sm lh-xs px4">4</span>
+                  </a>
+                </li>
+                <li class=" uql-nav--collapsed-item" role="menuitem">
+                  <a href="/questions?tab=Unanswered" class="s-block-link s-block-link__left" data-shortcut="">
+                    &#x41D;&#x435;&#x43E;&#x442;&#x432;&#x435;&#x447;&#x435;&#x43D;&#x43D;&#x44B;&#x435;
+                  </a>
+                </li>
+                <li role="menuitem">
+                  <a href="/questions?tab=Frequent" class="s-block-link s-block-link__left" data-shortcut="F">
+                    &#x426;&#x438;&#x442;&#x438;&#x440;&#x443;&#x435;&#x43C;&#x44B;&#x435;
+                  </a>
+                </li>
+                <li role="menuitem">
+                  <a href="/questions?tab=Votes" class="s-block-link s-block-link__left" data-shortcut="V">
+                    &#x420;&#x435;&#x439;&#x442;&#x438;&#x43D;&#x433;
+                  </a>
+                </li>
+                <li class="s-menu--divider" role="separator"></li>
+                <li role="menuitem">
+                  <span class="s-block-link c-default fc-black-350">&#x41D;&#x435;&#x43E;&#x442;&#x432;&#x435;&#x447;&#x435;&#x43D;&#x43D;&#x44B;&#x435; (&#x43C;&#x43E;&#x438; &#x43C;&#x435;&#x442;&#x43A;&#x438;)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex--item">
+              <button class="s-btn s-btn__filled s-btn__sm s-btn__icon ws-nowrap"
+                      role="button"
+                      data-controller="s-expandable-control"
+                      data-s-expandable-control-toggle-class="is-selected"
+                      data-se-uql-target="toggleFormButton"
+                      aria-expanded="false"
+                      aria-controls="uql-form">
+                <svg aria-hidden="true" class="svg-icon iconFilter" width="18" height="18" viewBox="0 0 18 18"><path d="M2 4h14v2H2V4Zm2 4h10v2H4V8Zm8 4H6v2h6v-2Z"/></svg> &#x424;&#x438;&#x43B;&#x44C;&#x442;&#x440;
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <form class="s-expandable ps-relative z-active"
+            id="uql-form"
+            data-se-uql-target="form"
+            data-action="se-uql#navigate">
+        <input name="uqlId" type="hidden"/>
+        <div class="s-expandable--content">
+          <div class="bg-black-050 ba bc-black-100 bar-sm mb16">
+            <div class="px12 py16">
+              <div class="d-flex gs32 fw-wrap">
+                <div class="flex--item">
+                  <fieldset class="d-flex gs8 gsy fd-column">
+                    <legend class="flex--item s-label px0">&#x424;&#x438;&#x43B;&#x44C;&#x442;&#x440;&#x430;&#x446;&#x438;&#x44F;</legend>
+                    <div class="flex--item">
+                      <div class="d-flex gs4 gsx ai-center">
+                        <div class="flex--item">
+                          <input class="s-checkbox d-block"
+                                 type="checkbox"
+                                 name="filterId"
+                                 value="NoAnswers"
+                                 id="b7189d6a-c36b-402c-923e-24ef12179667" />
+                        </div>
+                        <label class="flex--item s-label fw-normal ws-nowrap" for="b7189d6a-c36b-402c-923e-24ef12179667" id="5f32c54b-464b-44fc-84c7-6f3d4f9f4167">&#x411;&#x435;&#x437; &#x43E;&#x442;&#x432;&#x435;&#x442;&#x43E;&#x432;</label>
+                      </div>
+                    </div>
+                    <div class="flex--item">
+                      <div class="d-flex gs4 gsx ai-center">
+                        <div class="flex--item">
+                          <input class="s-checkbox d-block"
+                                 type="checkbox"
+                                 name="filterId"
+                                 value="NoAcceptedAnswer"
+                                 id="4e658af7-fdad-42d8-b218-86c3e7edd758" />
+                        </div>
+                        <label class="flex--item s-label fw-normal ws-nowrap" for="4e658af7-fdad-42d8-b218-86c3e7edd758" id="7b9b00fd-0af6-42ea-8bb2-fc99ccbc7e76">&#x411;&#x435;&#x437; &#x43F;&#x440;&#x438;&#x43D;&#x44F;&#x442;&#x43E;&#x433;&#x43E; &#x43E;&#x442;&#x432;&#x435;&#x442;&#x430;</label>
+                      </div>
+                    </div>
+                    <div class="flex--item">
+                      <div class="d-flex gs4 gsx ai-center">
+                        <div class="flex--item">
+                          <input class="s-checkbox d-block"
+                                 type="checkbox"
+                                 name="filterId"
+                                 value="Bounty"
+                                 id="d54d7ede-f5cc-46b2-8fa9-149c226dc087" />
+                        </div>
+                        <label class="flex--item s-label fw-normal ws-nowrap" for="d54d7ede-f5cc-46b2-8fa9-149c226dc087" id="eee8423a-19b6-48ac-88c7-3563f4a426c1">&#x41E;&#x431;&#x44A;&#x44F;&#x432;&#x43B;&#x435;&#x43D; &#x43A;&#x43E;&#x43D;&#x43A;&#x443;&#x440;&#x441;</label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="flex--item">
+                  <fieldset class="d-flex gs8 gsy fd-column">
+                    <legend class="flex--item s-label px0">&#x421;&#x43E;&#x440;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x43A;&#x430;</legend>
+                    <div class="flex--item">
+                      <div class="d-flex gs4 gsx ai-center">
+                        <div class="flex--item">
+                          <input class="s-radio d-block"
+                                 type="radio"
+                                 name="sortId"
+                                 value="Newest"
+                                 checked="checked"
+                                 id="b94a15ec-638b-4f19-ab38-52d9023a49dd" />
+                        </div>
+                        <label class="flex--item s-label fw-normal ws-nowrap" for="b94a15ec-638b-4f19-ab38-52d9023a49dd" id="f9351021-d57a-4e4b-a250-0c37c241de0e">&#x41D;&#x43E;&#x432;&#x44B;&#x435;</label>
+                      </div>
+                    </div>
+                    <div class="flex--item">
+                      <div class="d-flex gs4 gsx ai-center">
+                        <div class="flex--item">
+                          <input class="s-radio d-block"
+                                 type="radio"
+                                 name="sortId"
+                                 value="RecentActivity"
+                                 id="3d6cc35e-e99f-43d5-b1de-e5111024984c" />
+                        </div>
+                        <label class="flex--item s-label fw-normal ws-nowrap" for="3d6cc35e-e99f-43d5-b1de-e5111024984c" id="210d33bb-3597-4535-ae3a-1ae5dc548338">&#x41E;&#x431;&#x43D;&#x43E;&#x432;&#x43B;&#x451;&#x43D;&#x43D;&#x44B;&#x435;</label>
+                      </div>
+                    </div>
+                    <div class="flex--item">
+                      <div class="d-flex gs4 gsx ai-center">
+                        <div class="flex--item">
+                          <input class="s-radio d-block"
+                                 type="radio"
+                                 name="sortId"
+                                 value="MostVotes"
+                                 id="b8239a0f-989f-4862-ba4b-14905500f660" />
+                        </div>
+                        <label class="flex--item s-label fw-normal ws-nowrap" for="b8239a0f-989f-4862-ba4b-14905500f660" id="54adeead-caf1-4b76-8c31-c5e8a9565b65">&#x41D;&#x430;&#x438;&#x432;&#x44B;&#x441;&#x448;&#x438;&#x439; &#x440;&#x435;&#x439;&#x442;&#x438;&#x43D;&#x433;</label>
+                      </div>
+                    </div>
+                    <div class="flex--item">
+                      <div class="d-flex gs4 gsx ai-center">
+                        <div class="flex--item">
+                          <input class="s-radio d-block"
+                                 type="radio"
+                                 name="sortId"
+                                 value="MostFrequent"
+                                 id="1065aadb-d5a8-44c7-ab1c-fb845cf5d985" />
+                        </div>
+                        <label class="flex--item s-label fw-normal ws-nowrap" for="1065aadb-d5a8-44c7-ab1c-fb845cf5d985" id="d8ca43a6-6bbe-4214-ba44-dba8cac97e4d">&#x41D;&#x430;&#x438;&#x431;&#x43E;&#x43B;&#x435;&#x435; &#x447;&#x430;&#x441;&#x442;&#x44B;&#x435;</label>
+                      </div>
+                    </div>
+                    <div class="flex--item">
+                      <div class="d-flex gs4 gsx ai-center">
+                        <div class="flex--item">
+                          <input class="s-radio d-block"
+                                 type="radio"
+                                 name="sortId"
+                                 value="BountyEndingSoon"
+                                 id="019fa0a0-baa2-4c30-ba6f-68ef02b8aa4c" />
+                        </div>
+                        <label class="flex--item s-label fw-normal ws-nowrap" for="019fa0a0-baa2-4c30-ba6f-68ef02b8aa4c" id="02ae2a43-f699-46be-8e6e-974141e3beb2">&#x41A;&#x43E;&#x43D;&#x43A;&#x443;&#x440;&#x441; &#x441;&#x43A;&#x43E;&#x440;&#x43E; &#x437;&#x430;&#x43A;&#x430;&#x43D;&#x447;&#x438;&#x432;&#x430;&#x435;&#x442;&#x441;&#x44F;</label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="flex--item">
+                  <fieldset class="d-flex gs8 gsy fd-column">
+                    <legend class="flex--item s-label px0">&#x41C;&#x435;&#x442;&#x43A;&#x438;</legend>
+                    <div class="flex--item">
+                      <div class="d-flex gs4 gsx ai-center">
+                        <div class="flex--item">
+                          <input class="s-radio d-block"
+                                 type="radio"
+                                 name="tagModeId"
+                                 value="Watched"
+                                 id="841d722f-7861-482c-86af-7b68f8e92cbe" />
+                        </div>
+                        <label class="flex--item s-label fw-normal ws-nowrap" for="841d722f-7861-482c-86af-7b68f8e92cbe" id="bc1d7935-1209-4342-a387-141926961dec">&#x41E;&#x442;&#x441;&#x43B;&#x435;&#x436;&#x438;&#x432;&#x430;&#x435;&#x43C;&#x44B;&#x435; &#x43C;&#x435;&#x442;&#x43A;&#x438;</label>
+                      </div>
+                    </div>
+
+                    <div class="flex--item">
+                      <div class="d-flex gs4 gsx ai-center">
+                        <div class="flex--item">
+                          <input class="s-radio d-block"
+                                 type="radio"
+                                 name="tagModeId"
+                                 value="Specified"
+                                 checked="checked"
+                                 id="c77e3e26-a941-47b7-a070-e2de44dcf42c" />
+                        </div>
+                        <label class="flex--item s-label fw-normal ws-nowrap" for="c77e3e26-a941-47b7-a070-e2de44dcf42c" id="faca2db9-1feb-4b74-a150-178b9cfaf804">&#x423;&#x43A;&#x430;&#x437;&#x430;&#x43D;&#x43D;&#x44B;&#x435; &#x43D;&#x438;&#x436;&#x435; &#x43C;&#x435;&#x442;&#x43A;&#x438;:</label>
+                      </div>
+                    </div>
+
+                  </fieldset>
+                  <div class="ps-relative ml24 mt8 ws2">
+                    <input id="uql-modal-tag-input" class="w100 s-input" name="tagQuery" data-se-uql-target="tagQuery" type="text" size="60" tabindex="0" aria-labelledby="faca2db9-1feb-4b74-a150-178b9cfaf804" placeholder="&#x41D;&#x430;&#x43F;&#x440;&#x438;&#x43C;&#x435;&#x440;, javascript or python">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p12 bt bc-black-100">
+              <div class="d-flex">
+                <div class="d-flex gs4 gsx fl1">
+                  <button class="s-btn s-btn__sm s-btn__primary flex--item" type="submit" data-se-uql-target="applyButton">&#x41F;&#x440;&#x438;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x44C; &#x444;&#x438;&#x43B;&#x44C;&#x442;&#x440;</button>
+                </div>
+                <div class="flex--item">
+                  <button class="s-btn s-btn__sm" data-action="se-uql#cancelEditor" type="button">&#x41E;&#x442;&#x43C;&#x435;&#x43D;&#x430;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+
+
+    <div id="questions" class=" flush-left">
+
+    </div>
+
+    <time class="s-user-card--time">задан <span title='2022-10-13 11:38:40Z' class='relativetime'>0 часов назад</span></time>
+  </div>
+</div>
+
+<script type="text/javascript" src="../static/js/header.js"></script>
+<script type="text/javascript" src="../static/js/sidebar.js"></script>
+<script type="text/javascript" src="../static/js/footer.js"></script>
+</body>
+</html>
