@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,11 +15,11 @@ import java.time.LocalDateTime;
 @Schema(description = "вопрос")
 public class QuestionDto {
     @Parameter (description = "id вопроса")
-    private Long id;
+    private UUID id;
     @Schema(description = "заголовок вопроса")
     private String title;
     @Schema(description = "id автора")
-    private Long authorId;
+    private UUID authorId;
     @Schema(description = "имя автора")
     private String authorName;
     @Schema(description = "ссылка на изображение автора")

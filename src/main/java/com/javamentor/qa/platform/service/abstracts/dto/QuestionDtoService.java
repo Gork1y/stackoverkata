@@ -5,7 +5,8 @@ import com.javamentor.qa.platform.service.abstracts.repository.ReadWriteService;
 import org.springframework.security.core.Authentication;
 
 import java.util.Optional;
+import java.util.UUID;
 
 public interface QuestionDtoService extends ReadWriteService<QuestionDto, Long> {
-    Optional<QuestionDto> getById(Long questionId, Authentication auth);
+    Optional<QuestionDto> getById(UUID questionId, Authentication auth);
 }

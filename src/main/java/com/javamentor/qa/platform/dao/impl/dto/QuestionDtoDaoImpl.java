@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class QuestionDtoDaoImpl extends ReadWriteDaoImpl<QuestionDto, Long> implements QuestionDtoDao {
@@ -18,7 +19,7 @@ public class QuestionDtoDaoImpl extends ReadWriteDaoImpl<QuestionDto, Long> impl
     private EntityManager entityManager;
 
     @Override
-    public Optional<QuestionDto> getById(Long questionId, Long authorizedUserId) {
+    public Optional<QuestionDto> getById(UUID questionId, UUID authorizedUserId) {
         TypedQuery<QuestionDto> typedQuery = entityManager
             .createQuery("""
                     select new com.javamentor.qa.platform.models.dto.QuestionDto(q.id, q.title, u.id, u.fullName, u.imageLink, q.description,

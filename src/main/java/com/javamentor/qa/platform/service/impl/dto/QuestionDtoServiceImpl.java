@@ -24,7 +24,7 @@ public class QuestionDtoServiceImpl extends ReadWriteServiceImpl<QuestionDto, Lo
     }
 
     @Override
-    public Optional<QuestionDto> getById(Long questionId, Authentication auth) {
+    public Optional<QuestionDto> getById(UUID questionId, Authentication auth) {
         UUID authorizedUserId;
         if (auth != null) {
             User user = (User) auth.getPrincipal();
@@ -32,6 +32,6 @@ public class QuestionDtoServiceImpl extends ReadWriteServiceImpl<QuestionDto, Lo
         } else {
             authorizedUserId = null;
         }
-        return questionDtoDao.getById(questionId, authorizedUserId.node());
+        return questionDtoDao.getById(questionId, authorizedUserId);
     }
 }
