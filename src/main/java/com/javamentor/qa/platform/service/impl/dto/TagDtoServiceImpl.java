@@ -8,13 +8,14 @@ import com.javamentor.qa.platform.service.impl.repository.ReadWriteServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
-public class TagDtoServiceImpl extends ReadWriteServiceImpl<RelatedTagDto, Long> implements TagDtoService {
+public class TagDtoServiceImpl extends ReadWriteServiceImpl<RelatedTagDto, UUID> implements TagDtoService {
 
     private final TagDtoDao tagDtoDao;
 
-    public TagDtoServiceImpl(ReadWriteDao<RelatedTagDto, Long> readWriteDao, TagDtoDao tagDtoDao) {
+    public TagDtoServiceImpl(ReadWriteDao<RelatedTagDto, UUID> readWriteDao, TagDtoDao tagDtoDao) {
         super(readWriteDao);
         this.tagDtoDao = tagDtoDao;
     }
