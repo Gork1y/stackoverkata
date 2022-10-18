@@ -6,10 +6,12 @@ import com.javamentor.qa.platform.service.abstracts.model.TagService;
 import com.javamentor.qa.platform.service.impl.repository.ReadWriteServiceImpl;
 import org.springframework.stereotype.Service;
 
-@Service
-public class TagServiceImpl extends ReadWriteServiceImpl<Tag, Long> implements TagService {
+import java.util.UUID;
 
-    public TagServiceImpl(ReadWriteDao<Tag, Long> readWriteDao) {
+@Service
+public class TagServiceImpl extends ReadWriteServiceImpl<Tag, UUID> implements TagService {
+
+    public TagServiceImpl(ReadWriteDao<Tag, UUID> readWriteDao) {
         super(readWriteDao);
     }
 }
