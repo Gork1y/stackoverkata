@@ -11,4 +11,5 @@ public interface TagDtoDao extends ReadWriteDao<RelatedTagDto, UUID> {
 
     List<RelatedTagDto> getTop10Tags();
     List<TagDto> getTop3TagsByUser(UUID userId);
+    List<TagDto> getIgnoredTags(UUID userId);
 }

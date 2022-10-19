@@ -15,6 +15,12 @@ import java.util.UUID;
 @Setter
 @Schema(description = "тэг")
 public class TagDto {
+
+    public TagDto(UUID id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Parameter(description = "id тэга")
     private UUID id;
     @Schema(description = "название тэга")

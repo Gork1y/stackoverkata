@@ -6,10 +6,12 @@ import com.javamentor.qa.platform.service.abstracts.model.IgnoredTagService;
 import com.javamentor.qa.platform.service.impl.repository.ReadWriteServiceImpl;
 import org.springframework.stereotype.Service;
 
-@Service
-public class IgnoredTagServiceImpl extends ReadWriteServiceImpl<IgnoredTag, Long> implements IgnoredTagService {
+import java.util.UUID;
 
-    public IgnoredTagServiceImpl(ReadWriteDao<IgnoredTag, Long> readWriteDao) {
+@Service
+public class IgnoredTagServiceImpl extends ReadWriteServiceImpl<IgnoredTag, UUID> implements IgnoredTagService {
+
+    public IgnoredTagServiceImpl(ReadWriteDao<IgnoredTag, UUID> readWriteDao) {
         super(readWriteDao);
     }
 }
