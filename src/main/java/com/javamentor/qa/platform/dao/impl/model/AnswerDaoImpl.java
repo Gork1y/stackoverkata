@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.UUID;
 
 @Repository
-public class AnswerDaoImpl extends ReadWriteDaoImpl<Answer, Long> implements AnswerDao {
+public class AnswerDaoImpl extends ReadWriteDaoImpl<Answer, UUID> implements AnswerDao {
 
     @PersistenceContext
     private EntityManager entityManager;
-
 }
