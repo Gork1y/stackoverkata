@@ -7,9 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.UUID;
 
 @Repository
-public class IgnoredTagDaoImpl extends ReadWriteDaoImpl<IgnoredTag, Long> implements IgnoredTagDao {
+public class IgnoredTagDaoImpl extends ReadWriteDaoImpl<IgnoredTag, UUID> implements IgnoredTagDao {
 
     @PersistenceContext
     private EntityManager entityManager;

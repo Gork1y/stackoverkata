@@ -49,4 +49,17 @@ public class TagDtoDaoImpl extends ReadWriteDaoImpl<RelatedTagDto, UUID> impleme
         typedQuery.setParameter("userId", userId);
         return typedQuery.setMaxResults(3).getResultList();
     }
+
+    @Override
+    public List<TagDto> getIgnoredTags(UUID userId) {
+        TypedQuery<TagDto> typedQuery = entityManager.createQuery("""
+                select new com.javamentor.qa.platform.models.dto.TagDto(t.id, t.name)
+                from IgnoredTag i
+                join i.ignoredTag t
+                where i.user.id = :userId
+                """,
+                TagDto.class);
+        typedQuery.setParameter("userId", userId);
+        return typedQuery.getResultList();
+    }
 }
