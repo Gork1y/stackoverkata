@@ -6,10 +6,12 @@ import com.javamentor.qa.platform.service.abstracts.model.AnswerService;
 import com.javamentor.qa.platform.service.impl.repository.ReadWriteServiceImpl;
 import org.springframework.stereotype.Service;
 
-@Service
-public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implements AnswerService {
+import java.util.UUID;
 
-    public AnswerServiceImpl(ReadWriteDao<Answer, Long> readWriteDao) {
+@Service
+public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, UUID> implements AnswerService {
+
+    public AnswerServiceImpl(ReadWriteDao<Answer, UUID> readWriteDao) {
         super(readWriteDao);
     }
 }
