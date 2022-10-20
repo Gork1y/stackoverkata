@@ -1,19 +1,23 @@
 package com.javamentor.qa.platform.service.impl.dto;
 
+import com.javamentor.qa.platform.dao.abstracts.dto.PaginationDto;
 import com.javamentor.qa.platform.dao.abstracts.dto.TagDtoDao;
 import com.javamentor.qa.platform.dao.abstracts.dto.UserDtoDao;
 import com.javamentor.qa.platform.models.dto.UserDto;
 import com.javamentor.qa.platform.service.abstracts.dto.UserDtoService;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class UserDtoServiceImpl implements UserDtoService {
+public class UserDtoServiceImpl extends PaginationDtoServiceAbstract<UserDto> implements UserDtoService {
     private final UserDtoDao userDtoDao;
     private final TagDtoDao tagDtoDao;
-    public UserDtoServiceImpl(UserDtoDao userDtoDao, TagDtoDao tagDtoDao) {
+
+    public UserDtoServiceImpl(UserDtoDao userDtoDao, TagDtoDao tagDtoDao, Map<String, PaginationDto<UserDto>> paginationDaoMap) {
+        super(paginationDaoMap);
         this.userDtoDao = userDtoDao;
         this.tagDtoDao = tagDtoDao;
     }
